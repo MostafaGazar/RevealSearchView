@@ -8,4 +8,6 @@
 
     <color name="scrim_background">#55000000</color>
 
+    <color name="dark_actionbar_icon">#99000000</color>
+
 </resources>

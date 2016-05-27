@@ -5,16 +5,19 @@ import android.animation.AnimatorListenerAdapter;
 import android.animation.ValueAnimator;
 import android.annotation.TargetApi;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
-import android.support.v7.widget.SearchView;
+import android.support.v4.graphics.drawable.DrawableCompat;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.ViewAnimationUtils;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.view.animation.AnimationUtils;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.mostafagazar.samples.revealsearchview.animation.evaluator.HeightEvaluator;
@@ -35,13 +38,13 @@ public class SearchActivity extends BaseActivity {
     Toolbar toolbar;
 
     @BindView(R.id.scrim)
-    View scrim;
+    @Nullable View scrim;
 
     @BindView(R.id.search_panel)
     View searchPanel;
 
-    @BindView(R.id.search_view)
-    SearchView searchView;
+    @BindView(R.id.keyword_edittext)
+    EditText searchView;
 
     private SearchActivity.RevealAnimation selectedRevealAnimation;
 
@@ -54,10 +57,11 @@ public class SearchActivity extends BaseActivity {
         Intent i = getIntent();
         selectedRevealAnimation = (RevealAnimation) i.getSerializableExtra(Constants.EXTRA_SELECTED_REVEAL_ANIMATION);
 
+        Drawable drawable = getResources().getDrawable(R.drawable.ic_clear);
+        DrawableCompat.setTint(drawable, getResources().getColor(R.color.dark_actionbar_icon));
+        toolbar.setNavigationIcon(drawable);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        setupSearchView();
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             public void onClick(View paramAnonymousView) {
@@ -68,17 +72,6 @@ public class SearchActivity extends BaseActivity {
         doEnterAnim();
 
         overridePendingTransition(0, 0);
-    }
-
-    private void setupSearchView() {
-        searchView.setIconified(false);
-        searchView.setQueryHint(getString(R.string.keyword));
-        searchView.setOnCloseListener(new SearchView.OnCloseListener() {
-            public boolean onClose() {
-                SearchActivity.this.dismiss();
-                return false;
-            }
-        });
     }
 
     protected void onPause() {
@@ -129,11 +122,13 @@ public class SearchActivity extends BaseActivity {
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     private void doCircularRevealEnterAnim() {
-        scrim.animate()
-                .alpha(1.0F)
-                .setDuration(500L)
-                .setInterpolator(AnimationUtils.loadInterpolator(this, android.R.interpolator.fast_out_slow_in))
-                .start();
+        if (scrim != null) {
+            scrim.animate()
+                    .alpha(1.0F)
+                    .setDuration(500L)
+                    .setInterpolator(AnimationUtils.loadInterpolator(this, android.R.interpolator.fast_out_slow_in))
+                    .start();
+        }
 
         if (searchPanel != null) {
             searchPanel.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
@@ -162,19 +157,23 @@ public class SearchActivity extends BaseActivity {
         });
         animator.start();
 
-        scrim.animate()
-                .alpha(0.0F)
-                .setDuration(300L)
-                .setInterpolator(AnimationUtils.loadInterpolator(this, android.R.interpolator.fast_out_slow_in))
-                .start();
+        if (scrim != null) {
+            scrim.animate()
+                    .alpha(0.0F)
+                    .setDuration(300L)
+                    .setInterpolator(AnimationUtils.loadInterpolator(this, android.R.interpolator.fast_out_slow_in))
+                    .start();
+        }
     }
 
     public void doClassicRevealEnterAnim() {
-        scrim.animate()
-                .alpha(1.0F)
-                .setDuration(500L)
-                .setInterpolator(AnimationUtils.loadInterpolator(this, android.R.interpolator.fast_out_slow_in))
-                .start();
+        if (scrim != null) {
+            scrim.animate()
+                    .alpha(1.0F)
+                    .setDuration(500L)
+                    .setInterpolator(AnimationUtils.loadInterpolator(this, android.R.interpolator.fast_out_slow_in))
+                    .start();
+        }
 
         if (searchPanel != null) {
             searchPanel.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
@@ -224,11 +223,13 @@ public class SearchActivity extends BaseActivity {
         animatorHeight.start();
         animatorWidth.start();
 
-        scrim.animate()
-                .alpha(0.0F)
-                .setDuration(300L)
-                .setInterpolator(AnimationUtils.loadInterpolator(this, android.R.interpolator.fast_out_slow_in))
-                .start();
+        if (scrim != null) {
+            scrim.animate()
+                    .alpha(0.0F)
+                    .setDuration(300L)
+                    .setInterpolator(AnimationUtils.loadInterpolator(this, android.R.interpolator.fast_out_slow_in))
+                    .start();
+        }
     }
 
 }

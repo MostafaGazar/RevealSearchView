@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/search_panel"
     android:layout_width="@dimen/search_width"
@@ -24,11 +24,13 @@
             android:gravity="center_vertical"
             app:theme="@style/AppTheme.Widget.Toolbar.ThemeOverlay.Search">
 
-            <android.support.v7.widget.SearchView
-                android:id="@+id/search_view"
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/keyword_edittext"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:imeOptions="actionSearch|flagNoExtractUi" />
+                android:hint="@string/keyword"
+                android:imeOptions="actionSearch|flagNoExtractUi"
+                android:maxLines="1" />
         </android.support.v7.widget.Toolbar>
 
         <View
