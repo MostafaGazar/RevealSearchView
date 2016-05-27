@@ -1,0 +1,67 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+        <item name="android:windowBackground">@android:color/white</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+
+        <item name="android:homeAsUpIndicator">@drawable/ic_up</item>
+        <item name="homeAsUpIndicator">@drawable/ic_up</item>
+
+        <item name="toolbarStyle">@style/AppTheme.Widget.Toolbar</item>
+        <item name="actionBarTheme">@style/AppTheme.Widget.Toolbar.ThemeOverlay</item>
+        <item name="actionBarPopupTheme">@style/ThemeOverlay.AppCompat.Light</item>
+    </style>
+
+    <style name="AppTheme.Search">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="searchViewStyle">@style/Widget.AppTheme.SearchView</item>
+
+        <item name="toolbarStyle">@style/AppTheme.Widget.Toolbar.Search</item>
+        <item name="actionBarTheme">@style/AppTheme.Widget.Toolbar.ThemeOverlay.Search</item>
+        <item name="actionBarPopupTheme">@style/ThemeOverlay.AppCompat.Light</item>
+    </style>
+
+    <style name="AppTheme.Widget.Toolbar.ThemeOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="contentInsetStart">@dimen/keyline_2</item>
+        <item name="contentInsetEnd">@dimen/keyline_1</item>
+    </style>
+
+    <style name="AppTheme.Widget.Toolbar" parent="Widget.AppCompat.Toolbar">
+        <item name="contentInsetStart">@dimen/keyline_2</item>
+        <item name="contentInsetEnd">@dimen/keyline_1</item>
+        <item name="android:contentInsetStart" tools:targetApi="lollipop">@dimen/keyline_2</item>
+        <item name="android:contentInsetEnd" tools:targetApi="lollipop">@dimen/keyline_1</item>
+        <item name="android:elevation" tools:ignore="NewApi">@dimen/toolbar_elevation</item>
+        <item name="popupTheme">@style/ThemeOverlay.AppCompat.Light</item>
+        <item name="android:theme">@style/AppTheme.Widget.Toolbar.ThemeOverlay</item>
+        <item name="titleTextAppearance">@style/TextAppearance.Application.ToolbarTitle</item>
+        <item name="android:background">@color/colorPrimary</item>
+        <item name="android:minHeight">?attr/actionBarSize</item>
+    </style>
+
+    <style name="AppTheme.Widget.Toolbar.ThemeOverlay.Search" parent="ThemeOverlay.AppCompat.Light">
+    </style>
+
+    <style name="AppTheme.Widget.Toolbar.Search">
+        <item name="android:elevation" tools:ignore="NewApi">0dp</item>
+        <item name="android:theme">@style/AppTheme.Widget.Toolbar.ThemeOverlay.Search</item>
+        <item name="android:background">@android:color/white</item>
+    </style>
+
+    <style name="TextAppearance.Application.ToolbarTitle" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="Widget.AppTheme.SearchView" parent="@style/Widget.AppCompat.SearchView">
+        <item name="searchHintIcon">@null</item>
+        <item name="queryBackground">@null</item>
+        <item name="submitBackground">@null</item>
+    </style>
+
+</resources>

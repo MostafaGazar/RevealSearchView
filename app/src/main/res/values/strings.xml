@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Reveal SearchView</string>
+
+    <string name="search">Search</string>
+    <string name="keyword">Keyword</string>
+    <string name="search_results">Search Results</string>
+    <string name="message">Try hitting the search icon on the top right ;)</string>
+    <string name="reveal_animation_circular">Circular Reveal Animation</string>
+    <string name="reveal_animation_classic">Classic Reveal Animation</string>
+</resources>
